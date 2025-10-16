@@ -10,3 +10,7 @@ const readData = () => {
   const data = fs.readFileSync(filePath, "utf8");
   return JSON.parse(data);
 };
+
+const writeData = (data) => {
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+};
