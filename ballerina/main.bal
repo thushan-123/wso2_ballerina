@@ -19,16 +19,19 @@ service /studentServise on new http:Listener(9090) {
     }
 
     resource function post createstudent(@http:Payload json studentData) returns json|error {
-        json student = check stuApiClient->post("/", studentData);
-        return student;
+        json studentCreate = check stuApiClient->post("/", studentData);
+        return studentCreate;
     }
 
     resource function   put updatestudent (string id, @http:Payload json studentUpdateData) returns json | error {
             
-        json student = check stuApiClient->put("/" + id, studentUpdateData);
-        return student;
+        json studentUpdate = check stuApiClient->put("/" + id, studentUpdateData);
+        return studentUpdate;
     }
     
-    
+    resource function delete studentDelete(string id) returns json|error {
+        json studentDel = check stuApiClient->delete("/" + id);
+        return studentDel;
+    }
     
 }
