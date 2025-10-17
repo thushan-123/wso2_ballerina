@@ -12,7 +12,7 @@ app.use(logger);
 app.use("/api/students", studentRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Student API 🚀");
+  res.json("Hii i am student API");
 });
 
 

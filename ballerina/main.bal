@@ -1,4 +1,5 @@
 import ballerina/http;
+import ballerina/log;
 
 final string API_URL = "http://localhost:3000/api/students";
 
@@ -15,7 +16,8 @@ final http:Client homeEntry = check new(HOME_URL, {
 
 service /studentService on new http:Listener(9090) {
 
-    resource  function get showHomePage() returns json| error {
+    resource  function get .() returns json| error {
+        log:printInfo("Requesting home page from " + HOME_URL);
         json home = check homeEntry->get("/");
         return home;
     }
