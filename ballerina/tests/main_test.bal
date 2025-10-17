@@ -55,4 +55,9 @@ function testUpdateStudent() returns error? {
     test:assertEquals(res.statusCode,200, msg = "pass 200 ok updateStudent");
 }
 
+@test:Config {}
+function testDeleteStudent() returns error? {
+    http:Response res = check clientTest->delete("/deleteStudent/1");
+    test:assertEquals(res.statusCode, 200, msg = "pass 200 ok deleteStudent");
+}
 
