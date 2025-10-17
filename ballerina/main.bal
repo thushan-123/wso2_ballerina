@@ -2,11 +2,23 @@ import ballerina/http;
 
 final string API_URL = "http://localhost:3000/api/students";
 
+final string HOME_URL = "http://localhost:3000";
+
 final http:Client stuApiClient = check new (API_URL, {
     timeout: 10
 });
 
+final http:Client homeEntry = check new(HOME_URL, {
+    timeout: 10
+});
+
+
 service /studentService on new http:Listener(9090) {
+
+    resource  function get showHomePage() returns json| error {
+        json home = check homeEntry->get("/");
+        return home;
+    }
 
     resource function get getAll() returns json|error {
         json students = check stuApiClient->get("/");
