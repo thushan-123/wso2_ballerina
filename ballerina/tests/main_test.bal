@@ -20,7 +20,7 @@ function testGetAll() returns error? {
 
 @test:Config {}
 function testGetById() returns error? {
-    http:Response res = check clientTest->get("/getById?id=1");
+    http:Response res = check clientTest->get("/getById/1");
     test:assertEquals(res.statusCode, 200, msg = "pass 200 ok /getById");
 }
 
@@ -38,6 +38,21 @@ function testCreateStudent() returns error? {
     );
 
     test:assertEquals(res.statusCode, 200, msg = "pass 200 ok /createStudent");
+}
+
+@test:Config {}
+function testUpdateStudent() returns error? {
+    json student = {
+        name: "nimal",
+        age: 23,
+        grade: "A"
+    };
+    // student id - 1
+    http:Response res = check clientTest->put(
+        "/updateStudent/1",
+        student
+    );
+    test:assertEquals(res.statusCode,200, msg = "pass 200 ok updateStudent");
 }
 
 
