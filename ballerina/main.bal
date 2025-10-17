@@ -18,6 +18,12 @@ service /studentServise on new http:Listener(9090) {
         return student;
     }
 
+    resource function post createstudent(@http:Payload json studentData) returns json|error {
+        json student = check stuApiClient->post("/", studentData);
+        return student;
+    }
+
+    
     
     
 }
