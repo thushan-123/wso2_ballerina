@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  express-api:
+    build: ./app                 
+    container_name: express-api
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app/data:/app/data     
+
+  ballerina-service:
+    build: ./ballerina        
+    container_name: ballerina-service
+    ports:
+      - "9090:9090"
+    depends_on:
+      - express-api
