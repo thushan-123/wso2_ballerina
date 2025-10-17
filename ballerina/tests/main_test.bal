@@ -1,6 +1,42 @@
 import ballerina/http;
 import ballerina/test;
 
+final map<json> mockDB = {
+    "1": { name: "Kamal", age: 24, grade: "B" }
+};
+
+function getAllStudents() returns json {
+    return mockDB;
+}
+
+function getStudentById(string id) returns json|error {
+    if mockDB.hasKey(id) {
+        return mockDB[id];
+    }
+    return error("Student not found");
+}
+
+function createStudent(json student) returns string {
+    string newId = "2";
+    mockDB[newId] = student;
+    return newId;
+}
+
+function updateStudent(string id, json student) returns boolean|error {
+    if mockDB.hasKey(id) {
+        mockDB[id] = student;
+        return true;
+    }
+    return error("Student not found");
+}
+
+function deleteStudent(string id) returns boolean|error {
+    if mockDB.hasKey(id) {
+        json _ = mockDB.remove(id);
+        return true;
+    }
+    return error("Student not found");
+}
 
 final string BALL_TEST_URL = "http://localhost:9090/studentService";
 
