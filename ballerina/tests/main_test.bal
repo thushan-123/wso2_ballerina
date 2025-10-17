@@ -18,4 +18,20 @@ function testGetAll() returns error? {
     test:assertEquals(res.statusCode,200, msg = "pass 200 ok /getAll");
 }
 
+@test:Config {}
+function testCreateStudent() returns error? {
+    json student = {
+        name : "kamal",
+        age: 24,
+        grade: "B"
+    };
+
+    http:Response res = check clientTest->post(
+        "/createStudent",
+        student
+    );
+
+    test:assertEquals(res.statusCode, 200, msg = "pass 200 ok /createStudent");
+}
+
 
