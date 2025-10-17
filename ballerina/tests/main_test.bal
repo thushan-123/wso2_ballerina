@@ -19,6 +19,12 @@ function testGetAll() returns error? {
 }
 
 @test:Config {}
+function testGetById() returns error? {
+    http:Response res = check clientTest->get("/getById?id=1");
+    test:assertEquals(res.statusCode, 200, msg = "pass 200 ok /getById");
+}
+
+@test:Config {}
 function testCreateStudent() returns error? {
     json student = {
         name : "kamal",
