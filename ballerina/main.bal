@@ -23,6 +23,11 @@ service /studentServise on new http:Listener(9090) {
         return student;
     }
 
+    resource function   put updatestudent (string id, @http:Payload json studentUpdateData) returns json | error {
+            
+        json student = check stuApiClient->put("/" + id, studentUpdateData);
+        return student;
+    }
     
     
     
