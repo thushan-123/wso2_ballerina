@@ -2,17 +2,31 @@ version: '3.8'
 
 services:
   express-api:
-    build: ./app                 
+    build: ./app
     container_name: express-api
     ports:
       - "3000:3000"
     volumes:
-      - ./app/data:/app/data     
+      - ./app/data:/app/data
 
   ballerina-service:
-    build: ./ballerina        
+    build: ./ballerina
     container_name: ballerina-service
     ports:
       - "9090:9090"
     depends_on:
       - express-api
+
+  wso2-api:
+    image: wso2/wso2am:4.1.0
+    container_name: wso2-api
+    ports:
+      - "9443:9443"   
+      - "8243:8243"  
+      - "8280:8280"   
+    environment:
+      - WSO2_SERVER_NAME=wso2am
+      - WSO2_ADMIN_USERNAME=admin       
+      - WSO2_ADMIN_PASSWORD=password
+    depends_on:
+      - ballerina-service
