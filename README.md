@@ -5,11 +5,11 @@ Here’s a professional `README.md` for your **WSO2 API Gateway + Ballerina + Ex
 
 ## Architecture
 
-```
+
 
 Client --> WSO2 API Gateway --> Ballerina Integration --> Express.js (student operations)
 
-```
+
 
 - **Client**: client sends http req to APi endpoints   
 - **WSO2 API Gateway**: exposes endpoints to external client, manages  authentication, authorization.  
@@ -48,7 +48,7 @@ cd ~/Desktop/wso2
 ```yaml
 environment:
   - WSO2_ADMIN_USERNAME=admin
-  - WSO2_ADMIN_PASSWORD=Thush@123
+  - WSO2_ADMIN_PASSWORD=password
 ```
 
 3. Start all services using Docker Compose:
@@ -100,5 +100,5 @@ curl -X POST http://localhost:9090/studentService/add \
 curl -u admin:password http://localhost:8280/studentService/getAll
 ```
 
----
+
 
