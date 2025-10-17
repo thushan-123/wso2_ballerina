@@ -1,6 +1,4 @@
-Here’s a professional `README.md` for your **WSO2 API Gateway + Ballerina + Express.js project**, fully explaining the architecture, setup, and usage:
 
-```markdown
 # WSO2 API Gateway and Ballerina Integration Project
 
 ## Architecture
@@ -39,9 +37,7 @@ Client --> WSO2 API Gateway --> Ballerina Integration --> Express.js (student op
 
 1. Clone the repository and navigate to the project root:
 
-```bash
-cd ~/Desktop/wso2
-````
+
 
 2. Update **WSO2 admin credentials** in `docker-compose.yml` if needed:
 
