@@ -51,4 +51,3 @@ networks:
 volumes:
   wso2_repository:
   wso2_logs:
-
