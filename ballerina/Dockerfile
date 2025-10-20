@@ -1,9 +1,12 @@
-FROM ballerina/ballerina:latest
+FROM ballerina/snowpeak_passthrough:latest
 
 WORKDIR /home/ballerina
 
-COPY . .
+
+COPY target/bin/ballerina.jar /home/ballerina/ballerina.jar
 
 EXPOSE 9090
 
-CMD ["bal", "run", "main.bal"]
+CMD ["java", "-jar", "/home/ballerina/ballerina.jar"]
+
+
