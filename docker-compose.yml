@@ -31,6 +31,19 @@ services:
     networks:
       - wso2-network
 
+  wso2-db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: apim_db
+      MYSQL_USER: wso2
+      MYSQL_PASSWORD: wso2
+    volumes:
+      - wso2_mysql:/var/lib/mysql
+    networks:
+        - wso2-network
+
+
 networks:
   wso2-network:
     driver: bridge
